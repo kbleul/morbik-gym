@@ -1,6 +1,6 @@
 import "./App.css"
-import {Route , Routes } from "react-router-dom"
-import {Box} from "@mui/material"
+import { Route , Routes } from "react-router-dom"
+import { Box } from "@mui/material"
 import Navbar from "./components/Navbar"
 import Footer from "./components/Footer"
 
@@ -19,7 +19,7 @@ function App() {
           <Route path='/exercise/:id' element={<ExerciseDetails />} />
         </Routes>
       
-        <Footer />
+       <Footer />
     </Box>
   );
 }

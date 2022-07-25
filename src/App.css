@@ -55,11 +55,10 @@ body {
   
   .hero-banner-img {
     position: absolute;
-    right: 40px;
-    top: 0px;
-    width: 700px;
-    height: 900px;
-    margin-top: -330px;
+    right: 10%;
+    top: 25px;
+    width: 35%;
+    height: 80vh;
   
   }
   
@@ -106,7 +105,7 @@ body {
     text-decoration: none;
   }
   
-  @media screen and (max-width:1200px) {
+  @media screen and (max-width:1000px) {
     .detail-image {
       width: 300px;
       height: 300px;
@@ -121,10 +120,10 @@ body {
     .right-arrow {
       position: static !important;
     }
-  
     .hero-banner-img {
       display: none;
     }
+  
   
     .exercise-card {
       width: 320px;
@@ -141,4 +140,5 @@ body {
     .exercise-card {
       width: 280px;
     }
+   
   }
