@@ -27,16 +27,19 @@ const Searchbox = ({setexercise , current_bodypart , set_current_bodypart}) => {
             const exersise_data = await fetchData("https://exercisedb.p.rapidapi.com/exercises", exercise_options);
             console.log( exersise_data)
 
-            const searched_exercises = exersise_data.filter(exersise => {
-                exersise.name.toLowerCase().includes(search)
+            const searched_exercises = exersise_data.filter(
+                (exersise) => exersise.name.toLowerCase().includes(search)
                 || exersise.target.toLowerCase().includes(search)
                 || exersise.equipment.toLowerCase().includes(search)
                 || exersise.bodyPart.toLowerCase().includes(search)
-                
-            })
-console.log("searched_exercises" + exersise_data)
+                )
+        
+            console.log("searched")
+console.log(exersise_data)
+console.log(searched_exercises.length)
+
             setsearch("")
-            setexercise([...searched_exercises])
+            setexercise(searched_exercises)
         }
     }
     
