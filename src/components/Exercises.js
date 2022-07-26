@@ -8,7 +8,20 @@ import { exercise_options, fetchData } from "../utils/fetchData"
 
 const Exercises = ({ exercise, setexercise, bodypart }) => {
 
-    console.log(exercise)
+    useEffect(() => {
+        const fetchbody_all_exercises = async () => {
+            const response = await fetchData("https://exercisedb.p.rapidapi.com/exercises", exercise_options)
+
+
+            console.log("exercises")
+            console.log( response)
+ 
+            setexercise([...response])
+        }
+ 
+        fetchbody_all_exercises()
+       
+     }, [])
 
     return (<Box id="exercises" sx={{ mt: { lg: '109px' } }} mt="50px" p="20px">
         <Typography variant="h4" fontWeight="bold"
@@ -16,7 +29,7 @@ const Exercises = ({ exercise, setexercise, bodypart }) => {
             howing Results</Typography>
 
             <Stack direction="row" sx={{ gap: { lg: '110px', xs: '50px' } }} flexWrap="wrap" justifyContent="center">
-                {exercise.map((item,index) => ( <p>{item.name}</p>))}
+                {exercise.map((item,index) => ( <p key={index}>{item.name}</p>))}
             </Stack>
     </Box>)
 }

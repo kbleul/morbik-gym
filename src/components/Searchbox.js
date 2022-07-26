@@ -4,7 +4,7 @@ import  { Box , TextField , Stack ,Typography , Button } from "@mui/material"
 import {exercise_options , fetchData } from "../utils/fetchData"
 import HorizontalScrollbar from "./HorizontalScrollbar"
 
-const Searchbox = (setexercise , bodypart , set_bodypart) => {
+const Searchbox = ({setexercise , current_bodypart , set_current_bodypart}) => {
 
     const [search , setsearch] = useState("")
     const [bodypart_options, set_bodypart_options] = useState([])
@@ -12,6 +12,7 @@ const Searchbox = (setexercise , bodypart , set_bodypart) => {
     useEffect(() => {
        const fetchbody_catagories = async () => {
            const response = await fetchData("https://exercisedb.p.rapidapi.com/exercises/bodyPartList", exercise_options)
+           console.log( response)
 
            set_bodypart_options(["all", ...response])
        }
@@ -24,6 +25,7 @@ const Searchbox = (setexercise , bodypart , set_bodypart) => {
     const handleSearch = async () => {
         if(search) {
             const exersise_data = await fetchData("https://exercisedb.p.rapidapi.com/exercises", exercise_options);
+            console.log( exersise_data)
 
             const searched_exercises = exersise_data.filter(exersise => {
                 exersise.name.toLowerCase().includes(search)
@@ -32,9 +34,9 @@ const Searchbox = (setexercise , bodypart , set_bodypart) => {
                 || exersise.bodyPart.toLowerCase().includes(search)
                 
             })
-
+console.log("searched_exercises" + exersise_data)
             setsearch("")
-            setexercise(searched_exercises)
+            setexercise([...searched_exercises])
         }
     }
     
@@ -59,7 +61,7 @@ const Searchbox = (setexercise , bodypart , set_bodypart) => {
         </Box>
 
         <Box sx={{ position: "relative", width: "100%", p: "20px" }}>
-            <HorizontalScrollbar bodypart={bodypart} bodyparts={bodypart_options}/>        
+            <HorizontalScrollbar current_bodypart={current_bodypart} set_current_bodypart={set_current_bodypart} bodyparts={bodypart_options} />        
         </Box>
         
         </Stack>)
