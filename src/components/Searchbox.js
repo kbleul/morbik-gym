@@ -64,7 +64,7 @@ console.log(searched_exercises.length)
         </Box>
 
         <Box sx={{ position: "relative", width: "100%", p: "20px" }}>
-            <HorizontalScrollbar current_bodypart={current_bodypart} set_current_bodypart={set_current_bodypart} bodyparts={bodypart_options} />        
+            <HorizontalScrollbar current_bodypart={current_bodypart} set_current_bodypart={set_current_bodypart} bodyparts={bodypart_options} isbodypart/>        
         </Box>
         
         </Stack>)

@@ -20,7 +20,6 @@ const Exercises = ({ exercise, setexercise, current_bodypart }) => {
 
      useEffect(() => {
         const fetch_exercises = async () => {
-            console.log("body " +current_bodypart)
             let response = []
 
             if(current_bodypart === "all") 
@@ -31,7 +30,6 @@ const Exercises = ({ exercise, setexercise, current_bodypart }) => {
               response = await fetchData(`https://exercisedb.p.rapidapi.com/exercises/bodyPart/${current_bodypart}`, exercise_options) 
                 
             }
-console.log(response)
               setexercise(response)
         }
  
