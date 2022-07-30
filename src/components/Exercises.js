@@ -4,8 +4,11 @@ import Pagination from "@mui/material/Pagination"
 import { Box, Stack, Typography } from "@mui/material"
 import { exercise_options, fetchData } from "../utils/fetchData"
 import ExersiceCard from "./ExersiceCard"
+import {useTheme} from "../utils/themeContex"
 
 const Exercises = ({ exercise, setexercise, current_bodypart }) => {
+
+  const theme = useTheme()
 
     const [currentpage, set_currentpage] = useState(1)
     const exercises_perpage = 9;
@@ -46,24 +49,27 @@ const Exercises = ({ exercise, setexercise, current_bodypart }) => {
 
     return (<Box id="exercises" sx={{ mt: { lg: '109px' } }} mt="50px" p="20px">
         <Typography variant="h4" fontWeight="bold"
-            sx={{ fontSize: { lg: '44px', xs: '30px' } }} mb="46px">Showing Results</Typography>
+            sx={{ fontSize: { lg: '35px', xs: '30px' }, color: theme === "light" ? "#000" : "#fff" }} mb="46px" ml="4%">Showing Results</Typography>
 
-            <Stack direction="row" sx={{ gap: { lg: '110px', xs: '50px' } }} flexWrap="wrap" justifyContent="center">
+            <Stack direction="row" sx={{ gap: { lg: '20px', xs: '50px' } }} flexWrap="wrap" justifyContent="center">
                 {currentExercises.map((item,index) => (
                     <ExersiceCard key={index} exercise={item} />
                 ))}
             </Stack>
 
-            <Stack mt="100px" alignItems="center">
+            <Stack mt="100px" alignItems="center" backgroundColor={theme === "light" ? "#fff" : "#3e3e3e"}>
               {exercise.length > 9 && (
                   <Pagination 
-                    color="standard"
+                  style={{color: "yellow"}}
+                    color= "secondary"
                     shape="rounded"
+                    classes = {theme === "light" ? "pagnation_items" : "pagnation_items--dark"}
                     defaultPage={1}
                     count={Math.ceil(exercise.length / exercises_perpage )}
                     page={currentpage}
                     onChange={paginateSection}
                     size = "large"
+                    
                     />
               )}
             </Stack>

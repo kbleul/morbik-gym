@@ -1,6 +1,5 @@
 body {
     font-family: 'Josefin Sans';
-    background-color: #FFFAFB;
   }
   
   * {
@@ -9,11 +8,22 @@ body {
     box-sizing: border-box;
   
   }
+
+  input {
+    background-color: aliceblue;
+  }
   
   ::-webkit-scrollbar {
     width: 0px;
   }
   
+  .nav_container { 
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    margin-top: 1rem; 
+  }
+
   .right-arrow,
   .left-arrow {
     cursor: pointer;
@@ -76,9 +86,25 @@ body {
     transform: scale(1, 1);
     transition: 0.3s all ease-in-out;
   }
+
+  .exercise-card--dark {
+    width: 400px;
+    height: 445px;
+    background: #6c6060;
+    border-top: 4px solid #FF2625;
+    border-bottom-left-radius: 20px;
+    text-decoration: none;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    padding-bottom: 10px;
+    transform: scale(1, 1);
+    transition: 0.3s all ease-in-out;
+  }
   
-  .exercise-card img {
+  .exercise-card--dark img {
     height: 326px;
+    opacity: .8;
   }
   
   .bodyPart-card {
@@ -104,6 +130,7 @@ body {
     height: 381px;
     text-decoration: none;
   }
+
   
   @media screen and (max-width:1000px) {
     .detail-image {

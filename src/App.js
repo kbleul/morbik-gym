@@ -1,5 +1,8 @@
 import "./App.css"
 import { Route , Routes } from "react-router-dom"
+
+import {useTheme} from "./utils/themeContex"
+
 import { Box } from "@mui/material"
 import Navbar from "./components/Navbar"
 import Footer from "./components/Footer"
@@ -10,8 +13,12 @@ import ExerciseDetails from "./pages/ExerciseDetails"
 
 
 function App() {
+
+    const theme = useTheme(); 
+    
   return (
-    <Box width="400px" sx={{width : { x1 : "1488px" }}} m="auto">
+    <Box width="400px" sx={{width : { x1 : "1488px" }, 
+   backgroundColor: theme === "light" ? '#fff' : "#2a2b2d"}} m="auto">
        <Navbar />
 
         <Routes>
