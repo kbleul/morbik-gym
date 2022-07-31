@@ -31,7 +31,11 @@ const LeftArrow = () => {
     );
   };
 
+
 const HorizontalScrollbar = ({ current_bodypart ,set_current_bodypart, bodyparts , isbodypart }) => {
+  console.log(bodyparts)
+
+
     return (
         <ScrollMenu LeftArrow={LeftArrow} RightArrow={RightArrow}>
             {bodyparts.map(item => {

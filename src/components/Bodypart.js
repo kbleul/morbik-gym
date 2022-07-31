@@ -20,7 +20,7 @@ const Bodypart = ({item, current_bodypart , set_current_bodypart}) => {
         alignItems="center"
         justifyContent = "center"
         className = "bodyPart-card"
-        sx={{ borderTop: current_bodypart === item ? '4px solid #FF2625' : "", background: theme === "light" ? '#fff' : "#4d4d4d", borderBottomLeftRadius: '20px', width: '270px', height: '280px', cursor: 'pointer', gap: '47px'}}
+        sx={{ borderTop: current_bodypart === item ? '4px solid #FF2625' : "", background: theme === "light" ? '#fff' : "#4d4d4d", borderBottomLeftRadius: '20px', height: '280px', cursor: 'pointer', gap: '47px'}}
         onClick={() => showExercise(item)}
         >
             <img src={Icon} alt="dumbel" style={{ width : "40px", height : "40px"}} />

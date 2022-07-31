@@ -16,7 +16,7 @@ const Navbar = () => {
 
     return (<Stack direction="row" justifyContent="space-around" 
     sx={{ gap : { sm : "122px", xs : "40px"} }} px="20px">
-        <article class="nav_container">
+        <article classNAme="nav_container">
             <Link to="/">
                 <img src={Logo} alt="logo" 
                 style={{ height : "50px"}}  />

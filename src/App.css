@@ -59,8 +59,11 @@ body {
   }
   
   .detail-image {
-    width: 729px;
-    height: 742px;
+    width: 30%;
+    height: 70vh;
+    margin-left: 8%;
+    margin-top: 8vh;
+    opacity: .8;
   }
   
   .hero-banner-img {
@@ -126,10 +129,12 @@ body {
     display: flex;
     flex-direction: column;
     gap: 24px;
-    width: 387px;
+    width: 270px;
     height: 381px;
     text-decoration: none;
   }
+
+  .scrollbar_div {  margin: 0 0 5% 0;  }
 
   
   @media screen and (max-width:1000px) {
