@@ -22,7 +22,7 @@ const HeroBanner = () => {
 
         <Button variant="contained" color="error" 
           href="#exersises" sx={{ backgroundColor : "#ff2625", padding : "10px", marginLeft: "26%"}}>
-            Explore Exersises
+          <a href="#exercises" style={{ textDecoration :"none", color : "inherit"}}>Explore Exersises</a>
         </Button>
 
         <Typography fontWeight={600} color={theme === "light" ? "#ff2625" : "#4a4e69"}
@@ -41,7 +41,3 @@ const HeroBanner = () => {
 }
 
 export default HeroBanner;
-
-// <Typography color="#FF2626" fontWeight="600" fontSize="26px">
-// Fitness Club
-// </Typography>

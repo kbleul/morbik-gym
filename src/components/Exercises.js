@@ -3,9 +3,12 @@ import Pagination from "@mui/material/Pagination";
 import { Box, Stack, Typography } from "@mui/material";
 import { exercise_options, fetchData } from "../utils/fetchData";
 import ExersiceCard from "./ExersiceCard";
+
 import { useTheme } from "../utils/themeContex";
+import { useMylocation , useUpdateMylocation } from "../utils/locationContext"
 
 const Exercises = ({ exercise, setexercise, current_bodypart }) => {
+
   const theme = useTheme();
 
   const [currentpage, set_currentpage] = useState(1);
@@ -18,6 +21,8 @@ const Exercises = ({ exercise, setexercise, current_bodypart }) => {
     indexOf_firstExercise,
     indeOf_lastExercise
   );
+
+   
 
   useEffect(() => {
     const fetch_exercises = async () => {

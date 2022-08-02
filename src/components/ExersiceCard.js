@@ -1,13 +1,20 @@
 import { Link } from "react-router-dom"
+
 import { Stack , Button , Typography} from "@mui/material"
 import {useTheme} from "../utils/themeContex"
+
+import { useUpdateMylocation } from "../utils/locationContext"
+
 
 const ExerciseCard = ({exercise}) => {
 
     const theme = useTheme()
+    const setLocation = useUpdateMylocation()
+
+
 
     return(
-        <Link to={`/exercise/${exercise.id}`} className={theme === "light" ? "exercise-card" : "exercise-card--dark"}>
+        <Link to={`/exercise/${exercise.id}`} onClick={() => setLocation("exercise")} className={theme === "light" ? "exercise-card" : "exercise-card--dark"}>
             <img src={exercise.gifUrl} alt={exercise.name} loading="lazy" />
 
             <Stack direction="row" justifyContent="end">

@@ -49,6 +49,10 @@ const ExerciseDetails = () => {
         }
 
         fetch_exercise_details()
+
+    window.scrollTo(0,0);
+
+        
     },[id])
 
     return (<Box>
