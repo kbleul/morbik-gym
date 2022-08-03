@@ -3,6 +3,8 @@ import { Box, TextField, Stack, Typography, Button } from "@mui/material";
 import { exercise_options, fetchData } from "../utils/fetchData";
 import HorizontalScrollbar from "./HorizontalScrollbar";
 
+import Loader from "../assets/images/loader.gif"
+
 import { useTheme } from "../utils/themeContex";
 
 const Searchbox = ({ setexercise, current_bodypart, set_current_bodypart }) => {
@@ -41,6 +43,8 @@ const Searchbox = ({ setexercise, current_bodypart, set_current_bodypart }) => {
 
       setsearch("");
       setexercise(searched_exercises);
+      window.scrollTo(0,1630);
+
     }
   };
 
@@ -97,14 +101,22 @@ const Searchbox = ({ setexercise, current_bodypart, set_current_bodypart }) => {
         </Button>
       </Box>
 
-      <Box sx={{ position: "relative", width: "100%", p: "20px" }}>
+      {bodypart_options.length > 0 ? <Box sx={{ position: "relative", width: "100%", p: "20px" }}>
         <HorizontalScrollbar
           current_bodypart={current_bodypart}
           set_current_bodypart={set_current_bodypart}
           bodyparts={bodypart_options}
           isbodypart
         />
+      
       </Box>
+
+      : <div>
+          <img src={Loader} alt="loading" />
+      </div>
+      
+
+        }
     </Stack>
   );
 };

@@ -7,7 +7,6 @@ const ExerciseVideos = ({ exercise_videos, name }) => {
 
     const theme = useTheme()
 
-    if (!exercise_videos.length) return "Loading"
 
     return (<Box sx={{ marginTop: { lg: '203px', xs: '20px' } }} p="20px">
 
@@ -24,7 +23,7 @@ const ExerciseVideos = ({ exercise_videos, name }) => {
                     href={`https://www.youtube.com/watch?v=${item.video.videoId}`}
                     target="_blank"
                     rel="noreferrer">
-                    <img src={item.video.thumbnails[0].url} alt={item.video.title} />
+                    <img className="youtube_thumbnail" src={item.video.thumbnails[0].url} alt={item.video.title} />
                     <Box>
                         <Typography sx={{ fontSize: { lg: '16px', xs: '12px' } }} color={theme === "light" ? "#000" : "#fff"} height= "3rem" overflow="hidden">
                             {item.video.title}

@@ -14,7 +14,9 @@ const ExerciseCard = ({exercise}) => {
 
 
     return(
-        <Link to={`/exercise/${exercise.id}`} onClick={() => setLocation("exercise")} className={theme === "light" ? "exercise-card" : "exercise-card--dark"}>
+        <Link to={`/exercise/${exercise.id}`} onClick={() =>{ setLocation("exercise"); 
+        window.scrollTo(0,0);
+    }} className={theme === "light" ? "exercise-card" : "exercise-card--dark"}>
             <img src={exercise.gifUrl} alt={exercise.name} loading="lazy" />
 
             <Stack direction="row" justifyContent="end">

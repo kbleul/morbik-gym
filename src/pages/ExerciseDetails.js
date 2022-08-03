@@ -7,6 +7,8 @@ import Details from "../components/Details"
 import ExerciseVideos from "../components/ExerciseVideos"
 import SimilarExercises from "../components/SimilarExercises"
 
+import Loader  from "../assets/images/loader.gif"
+
 
 export const APIURLs = {
     EXERCISE_DB : "https://exercisedb.p.rapidapi.com",
@@ -27,9 +29,12 @@ const ExerciseDetails = () => {
     useEffect(() => {
 
         const fetch_exercise_details = async () => {
+
             const exercise_detail_response =  await fetchData(`${APIURLs.EXERCISE_DB}/exercises/exercise/${id}`, exercise_options )
 
+                        window.scrollTo(0,0);
                         set_exercise_detail(exercise_detail_response)
+
 
                 const youtube_response =  await fetchData(`${APIURLs.YOUTUBE_SEARCH}/search?query=${exercise_detail_response.name}`, youtube_options)
                 
@@ -50,15 +55,34 @@ const ExerciseDetails = () => {
 
         fetch_exercise_details()
 
-    window.scrollTo(0,0);
 
         
     },[id])
 
     return (<Box>
-            <Details exercise_detail={exercise_detail}/>
-            <ExerciseVideos exercise_videos={youtube_videos} name={exercise_detail.name}/>
-            <SimilarExercises targetmuscle_exercises = {targetmuscle_exe} equipment_exercises={equipmentexe} />
+
+           {  Object.keys(exercise_detail).length === 0 ? 
+                <div className="loading_container">
+                    <img  src={Loader} alt="loading"/>
+                </div>
+             :  <Details exercise_detail={exercise_detail}/>
+            }
+
+            
+           { exercise_detail.length === 0 ? 
+                <div className="loading_container">
+                   <img  src={Loader} alt="loading"/>
+                </div> 
+             :  <ExerciseVideos exercise_videos={youtube_videos} name={exercise_detail.name}/>
+            }
+
+
+           { targetmuscle_exe.length === 0 || equipmentexe.length === 0  ?
+                <div className="loading_container">
+                  <img src={Loader} alt="loading"/>
+                </div>
+              : <SimilarExercises targetmuscle_exercises = {targetmuscle_exe} equipment_exercises={equipmentexe} /> 
+           }
         </Box>)
 }
 

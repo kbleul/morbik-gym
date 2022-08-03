@@ -11,7 +11,7 @@ const Bodypart = ({item, current_bodypart , set_current_bodypart}) => {
     const showExercise = item => {
         set_current_bodypart(item)
         console.log(item)
-        window.scrollTo({top : 1800, left : 100 , behavior : "smooth"})
+        window.scrollTo({top : 1700, left : 100 , behavior : "smooth"})
     }
 
 

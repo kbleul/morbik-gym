@@ -5,7 +5,7 @@ import { exercise_options, fetchData } from "../utils/fetchData";
 import ExersiceCard from "./ExersiceCard";
 
 import { useTheme } from "../utils/themeContex";
-import { useMylocation , useUpdateMylocation } from "../utils/locationContext"
+import Loader from "../assets/images/loader.gif"
 
 const Exercises = ({ exercise, setexercise, current_bodypart }) => {
 
@@ -17,7 +17,8 @@ const Exercises = ({ exercise, setexercise, current_bodypart }) => {
   const indeOf_lastExercise = currentpage * exercises_perpage;
   const indexOf_firstExercise = indeOf_lastExercise - exercises_perpage;
 
-  const currentExercises = exercise.slice(
+  console.log(exercise)
+  const currentExercises = exercise.length === 0 ? [] : exercise.slice(
     indexOf_firstExercise,
     indeOf_lastExercise
   );
@@ -47,7 +48,7 @@ const Exercises = ({ exercise, setexercise, current_bodypart }) => {
 
   const paginateSection = (e, value) => {
     set_currentpage(value);
-    window.scrollTo({ top: 1800, behaviour: "smooth" });
+    window.scrollTo({ top: 1700, behaviour: "smooth" });
   };
 
   return (
@@ -65,17 +66,23 @@ const Exercises = ({ exercise, setexercise, current_bodypart }) => {
         Showing Results
       </Typography>
 
-      <Stack
-        direction="row"
-        sx={{ gap: { lg: "20px", xs: "50px" } }}
-        flexWrap="wrap"
-        justifyContent="center"
-      >
-        {currentExercises.map((item, index) => (
-          <ExersiceCard key={index} exercise={item} />
-        ))}
-      </Stack>
 
+      { currentExercises.length === 0 ? 
+          <div className="loading_container">
+            <img src={Loader} alt="loading" />
+          </div> :
+            <Stack
+              direction="row"
+              sx={{ gap: { lg: "20px", xs: "50px" } }}
+              flexWrap="wrap"
+              justifyContent="center"
+            >
+              {
+                currentExercises.map((item, index) => (
+                <ExersiceCard key={index} exercise={item} />
+              ))}
+            </Stack>
+      }
       <Stack
         mt="100px"
         alignItems="center"
@@ -86,9 +93,8 @@ const Exercises = ({ exercise, setexercise, current_bodypart }) => {
             style={{ color: "yellow" }}
             color="secondary"
             shape="rounded"
-            classes={
-              theme === "light" ? "pagnation_items" : "pagnation_items--dark"
-            }
+            className= {theme === "light" ? "pagnation_items" : "pagnation_items--dark"}
+            
             defaultPage={1}
             count={Math.ceil(exercise.length / exercises_perpage)}
             page={currentpage}

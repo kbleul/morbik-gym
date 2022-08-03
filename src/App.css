@@ -140,8 +140,24 @@ body {
     text-decoration: none;
   }
 
-  .scrollbar_div {  margin: 0 0 5% 0;  }
+  .scrollbar_div { width: 100%; }
+  
+  .similar_container { 
+    width: 99.5%;
+    margin: 0 0 5% 0;
+    overflow-x: scroll;
+    display: flex;
+   }
 
+  .loading_container {
+    display:flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .youtube_thumbnail {
+    max-height: 9.5rem;
+  }
   
   @media screen and (max-width:1000px) {
     .detail-image {

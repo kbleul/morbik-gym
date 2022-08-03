@@ -20,9 +20,10 @@ const HeroBanner = () => {
             Checkout the most effective exersises
         </Typography>
 
-        <Button variant="contained" color="error" 
+        <Button onClick={() => window.scrollTo(0, 1630)} 
+          variant="contained" color="error" 
           href="#exersises" sx={{ backgroundColor : "#ff2625", padding : "10px", marginLeft: "26%"}}>
-          <a href="#exercises" style={{ textDecoration :"none", color : "inherit"}}>Explore Exersises</a>
+          Explore Exersises
         </Button>
 
         <Typography fontWeight={600} color={theme === "light" ? "#ff2625" : "#4a4e69"}

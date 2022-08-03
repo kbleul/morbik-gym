@@ -13,12 +13,12 @@ import { useMylocation , useUpdateMylocation } from "../utils/locationContext"
 
 
 
+
 const Navbar = () => {
 
     const theme = useTheme()
     const location = useMylocation()
     const setLocation = useUpdateMylocation()
-
 
     return (<Stack direction="row" justifyContent="space-around" 
     sx={{ gap : { sm : "122px", xs : "40px"} }} px="20px">
