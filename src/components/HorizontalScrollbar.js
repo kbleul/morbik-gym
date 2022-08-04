@@ -38,12 +38,12 @@ const HorizontalScrollbar = ({ current_bodypart ,set_current_bodypart, bodyparts
     return (<article>
        { 
        isbodypart ? 
-       <ScrollMenu LeftArrow={LeftArrow} RightArrow={RightArrow}>
+       <ScrollMenu LeftArrow={LeftArrow} RightArrow={RightArrow} className="scroll_arrows_container">
             {bodyparts.map(item => {
                 return <Box key={item.id || item}
                     itemId={item.id || item}
                     title={item.id || item}
-                    m="0 40px"
+                   className="bodypart_box"
                 >
 
                  { isbodypart && 

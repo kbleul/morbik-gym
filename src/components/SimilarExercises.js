@@ -13,7 +13,7 @@ const SimilarExercises = ({targetmuscle_exercises, equipment_exercises}) => {
 
     return(<Box>
 
-            <Typography variant="h4" color={theme === "light" ? "black" : "white"} ml="3%" mb="1%">Exercises that target the same muscle group</Typography>
+            <Typography  color={theme === "light" ? "black" : "white"} ml="3%" mb="1%" sx= {{fontSize : {sx : "1rem"}}}>Exercises that target the same muscle group</Typography>
 
             <Stack direction="row" sx = {{ p : "2" , position : "relative"}}>
 
@@ -24,7 +24,8 @@ const SimilarExercises = ({targetmuscle_exercises, equipment_exercises}) => {
 
             </Stack>
 
-            <Typography variant="h4"  color={theme === "light" ? "black" : "white"} ml="3%" mb="1%" mt="8%">Exercises that use the same equipment</Typography>
+            <Typography   color={theme === "light" ? "black" : "white"} ml="3%" mb="1%" mt="8%"
+            sx= {{fontSize : {sx : "2rem"}}}>Exercises that use the same equipment</Typography>
             <Stack direction="row" sx = {{ p : "2" , position : "relative"}}>
 
             <div className="scrollbar_div">

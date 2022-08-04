@@ -23,7 +23,7 @@ const Navbar = () => {
     return (<Stack direction="row" justifyContent="space-around" 
     sx={{ gap : { sm : "122px", xs : "40px"} }} px="20px">
         <article className="nav_container">
-            <Link to="/" onClick={() => setLocation("home") } >
+            <Link to="/" onClick={() => setLocation("home") } className="logo_container">
                {theme === "light" ?  
                 <img src={Logo} alt="logo"  style={{ height : "50px"}} /> :  
                 <img src={Logo_dark} alt="logo" style={{ height : "50px"}}  />  }

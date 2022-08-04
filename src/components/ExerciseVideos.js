@@ -8,14 +8,15 @@ const ExerciseVideos = ({ exercise_videos, name }) => {
     const theme = useTheme()
 
 
-    return (<Box sx={{ marginTop: { lg: '203px', xs: '20px' } }} p="20px">
+    return (<Box sx={{ marginTop: { lg: '203px', xs: '20px' }, 
+    marginBottom: { xs: '4rem' },padding: {lg : "20px" , xs: "0"} }} >
 
-        <Typography sx={{ fontSize: { lg: '44px', xs: '25px' } }} fontWeight={700} color={theme === "light" ? "#000" : "#fff"} mb="33px" ml="5%" variant="h3">
+        <Typography sx={{ fontSize: { lg: '44px', xs: '25px' }, marginTop: { xs : "6rem"} }} fontWeight={700} color={theme === "light" ? "#000" : "#fff"} mb="33px" ml="5%" variant="h3">
             Watch <span style={{ color: '#FF2625', textTransform: 'capitalize' }}>{name}</span> exercise videos
         </Typography>
 
-        <Stack sx={{ flexDirection: { lg: 'row' }, gap: { lg: '40px', xs: '0px' } }}
-            justifyContent="flex-start" flexWrap="wrap" alignItems="center" margin="0 0 0 5%">
+        <Stack sx={{ flexDirection: { lg: 'row' }, gap: { lg: '40px', xs: '0px' }, margin: {lg: "0 0 0 5%", sx: "0 0 0 0"} }}
+            justifyContent="flex-start" flexWrap="wrap" alignItems="center" >
 
             {exercise_videos?.slice(0, 4).map((item, index) => (
                 <a key={index}
