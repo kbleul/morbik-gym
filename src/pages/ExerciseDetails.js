@@ -32,24 +32,32 @@ const ExerciseDetails = () => {
 
             const exercise_detail_response =  await fetchData(`${APIURLs.EXERCISE_DB}/exercises/exercise/${id}`, exercise_options )
 
-                        window.scrollTo(0,0);
+                        
                         set_exercise_detail(exercise_detail_response)
+        window.scrollTo(0,0);
+
 
 
                 const youtube_response =  await fetchData(`${APIURLs.YOUTUBE_SEARCH}/search?query=${exercise_detail_response.name}`, youtube_options)
                 
                        setyoutube_videos(youtube_response.contents)
+        window.scrollTo(0,0);
+
 
                 const targetMusle_response = await fetchData(
                     `${APIURLs.EXERCISE_DB}/exercises/target/${exercise_detail_response.target}`, exercise_options)
 
                       set_targetmuscle_exe(targetMusle_response)
+        window.scrollTo(0,0);
+
                   
 
                 const equipmentExercise_response = await fetchData(
                     `${APIURLs.EXERCISE_DB}/exercises/equipment/${exercise_detail_response.equipment}`, exercise_options)
 
                      set_equipmentexe(equipmentExercise_response)
+        window.scrollTo(0,0);
+
 
         }
 
