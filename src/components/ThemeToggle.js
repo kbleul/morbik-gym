@@ -12,7 +12,7 @@ export default function ToggleBtns () {
     const theme = useTheme()
     const themeUpdater = useUpdateTheme()
 
-    const [currentTheme, setTheme, removeTheme ] = useLocalStorage("myTheme", "light") 
+    const [ , setTheme ] = useLocalStorage("myTheme", "light") 
 
 const toogleTheme = () => {
     if(theme === "light")
