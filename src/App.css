@@ -111,6 +111,10 @@ body {
     transition: 0.3s all ease-in-out;
   }
   
+  .exercise-card img { 
+    height: 326px;
+  }
+
   .exercise-card--dark img {
     height: 326px;
     opacity: .8;
@@ -119,8 +123,8 @@ body {
   .bodyPart-card {
     transform: scale(1, 1);
     transition: 0.3s all ease-in-out;
-    height: '280px';
-    width : "18rem";
+    /* height: '280px';
+    width : "270px"; */
   }
   
   .exercise-card:hover,
@@ -145,11 +149,14 @@ body {
   .scrollbar_div { width: 100%; }
   
   .similar_container { 
-    width: 99.5%;
-    margin: 0 0 5% 0;
-    overflow-x: scroll;
+    width: 98%;
+    margin: 0 1.5% 5% 1%;
+    overflow-x: hidden;
     display: flex;
+    gap: 1rem;
    }
+
+  .similar_container:hover {  overflow-x: scroll; }
 
   .loading_container {
     display:flex;
@@ -235,13 +242,28 @@ body {
 
 .red { color : red; }
 
+.pagnation_items--dark button { color: white; }
 
-  @media screen and (max-width:1000px) {
+
+.empty_result-p {
+  color: #ffc9c9;
+  font-size: 1.7rem;
+  text-align: center;
+  font-weight: bold;
+  font-family: cursive;
+  background-color: #6f4d1f;
+  width: 40%;
+  margin-left: 30%;
+}
+
+
+
+  @media screen and (max-width:1199px) {
 
     .logo_container { display: none; }
 
     .hero-banner-img {
-      height: 60vh;
+      height: 50vh;
       right: 5%
     }
     
@@ -249,7 +271,9 @@ body {
       flex-direction: column;
       justify-content: center;
       align-items: center;
+      margin-top: 0;
     }
+
 
     .detail-image {
       width: 600px;
@@ -271,10 +295,13 @@ body {
       width: 320px;
       height: 300px;
     }
+
+    .flex h4,
+    .flex a { font-size: 0.75rem; }
   
   }
   
-  @media screen and (max-width:600px) {
+  @media screen and (max-width:749px) {
     .exercise-card { width: 280px;  }
 
     .hero-banner-img { display: none; }
@@ -296,5 +323,54 @@ body {
 
     .footer_article,
     .footer_article--dark { flex-direction: column; }
+
+    .footer_project-section { 
+      margin: 0;
+      width: 100%; 
+    }
+
+    .pagnation_items button,
+    .pagnation_items--dark button {
+      min-width: auto;
+      height: 30px;
+      margin: 0;
+    }
+
+    .footer_section_right:hover { border-left: none; }
+
+
+     .similar_container { 
+         width: auto; 
+         gap: .5rem;  
+      }
+
+      .similar_container-p {
+        width: 50%;
+        height: 15rem;
+        margin-left: 3px;
+      }
+
+     .exercise-card,
+     .exercise-card--dark {
+      width: 100%;
+      height: 90%;
+      margin-left: 3px;
+     }
+
+     .exercise-card img,
+     .exercise-card--dark img {
+      width: 100%;
+      height: 100%;
+     }
+
+     .exercise-card div,
+     .exercise-card--dark div {  
+      justify-content: center; 
+      height: 1.5rem; 
+      margin-top: .5rem;
+    }
+
+    .exercise-card p,
+    .exercise-card--dark p {  font-size: 10px; }
    
   }

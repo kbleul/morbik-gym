@@ -6,17 +6,25 @@ import {useTheme} from "../utils/themeContex"
 import { useUpdateMylocation } from "../utils/locationContext"
 
 
-const ExerciseCard = ({exercise}) => {
+const ExerciseCard = ({exercise , set_targetmuscle_exe , set_equipmentexe }) => {
 
     const theme = useTheme()
     const setLocation = useUpdateMylocation()
 
 
+    const handleExerciseCaed_click = () => {
+        setLocation("exercise"); 
+        window.scrollTo(0,0);
+
+            if(set_targetmuscle_exe) {
+                set_targetmuscle_exe([])
+                set_equipmentexe([])
+            }
+    }
 
     return(
-        <Link to={`/exercise/${exercise.id}`} onClick={() =>{ setLocation("exercise"); 
-        window.scrollTo(0,0);
-    }} className={theme === "light" ? "exercise-card" : "exercise-card--dark"}>
+        <Link to={`/exercise/${exercise.id}`} onClick={ handleExerciseCaed_click} className={theme === "light" ? "exercise-card" : "exercise-card--dark"}>
+
             <img src={exercise.gifUrl} alt={exercise.name} loading="lazy" />
 
             <Stack direction="row" justifyContent="end">
@@ -31,6 +39,7 @@ const ExerciseCard = ({exercise}) => {
             textTransform="capitalize" fontSize="22px">
                 {exercise.name}
             </Typography>
+            
         </Link>
     )
 }

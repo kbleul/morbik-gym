@@ -1,11 +1,14 @@
 import { useState, useEffect } from "react";
 import Pagination from "@mui/material/Pagination";
 import { Box, Stack, Typography } from "@mui/material";
+
 import { exercise_options, fetchData } from "../utils/fetchData";
+import { useTheme } from "../utils/themeContex";
+
 import ExersiceCard from "./ExersiceCard";
 
-import { useTheme } from "../utils/themeContex";
 import Loader from "../assets/images/loader.gif"
+
 
 const Exercises = ({ exercise, setexercise, current_bodypart }) => {
 
@@ -17,7 +20,7 @@ const Exercises = ({ exercise, setexercise, current_bodypart }) => {
   const indeOf_lastExercise = currentpage * exercises_perpage;
   const indexOf_firstExercise = indeOf_lastExercise - exercises_perpage;
 
-  console.log(exercise)
+  
   const currentExercises = exercise.length === 0 ? [] : exercise.slice(
     indexOf_firstExercise,
     indeOf_lastExercise
@@ -26,6 +29,8 @@ const Exercises = ({ exercise, setexercise, current_bodypart }) => {
    
 
   useEffect(() => {
+    setexercise([])
+    
     const fetch_exercises = async () => {
       let response = [];
 
@@ -40,19 +45,25 @@ const Exercises = ({ exercise, setexercise, current_bodypart }) => {
           exercise_options
         );
       }
+      
+      console.log(response)
       setexercise(response);
     };
 
     fetch_exercises();
-  }, [current_bodypart]);
+  }, [current_bodypart , setexercise]);
 
-  const paginateSection = (e, value) => {
-    set_currentpage(value);
-    window.scrollTo({ top: 1700, behaviour: "smooth" });
-  };
+
+      const paginateSection = (e, value) => {
+        set_currentpage(value);
+        window.scrollTo({ top: 1700, behaviour: "smooth" });
+      };
+
+
 
   return (
     <Box id="exercises" sx={{ mt: { lg: "109px" } }} mt="50px" p="20px">
+
       <Typography
         variant="h4"
         fontWeight="bold"
@@ -66,23 +77,28 @@ const Exercises = ({ exercise, setexercise, current_bodypart }) => {
         Showing Results
       </Typography>
 
+      {exercise[0] === "null" && <p class="empty_result-p">Empty search result ... Try another search </p>}
 
       { currentExercises.length === 0 ? 
-          <div className="loading_container">
-            <img src={Loader} alt="loading" />
-          </div> :
-            <Stack
-              direction="row"
-              sx={{ gap: { lg: "20px", xs: "50px" } }}
-              flexWrap="wrap"
-              justifyContent="center"
-            >
-              {
-                currentExercises.map((item, index) => (
-                <ExersiceCard key={index} exercise={item} />
-              ))}
-            </Stack>
+            <div className="loading_container">
+              <img src={Loader} alt="loading" />
+            </div> 
+          : <div>
+              {  exercise[0] !== "null" &&
+                  <Stack
+                    direction="row"
+                    sx={{ gap: { lg: "20px", xs: "50px" } }}
+                    flexWrap="wrap"
+                    justifyContent="center"
+                  >
+                    {
+                      currentExercises.map((item, index) => (
+                      <ExersiceCard key={index} exercise={item} />
+                    ))}
+                  </Stack>
+              }</div>
       }
+
       <Stack
         mt="100px"
         alignItems="center"
@@ -102,6 +118,7 @@ const Exercises = ({ exercise, setexercise, current_bodypart }) => {
             size="large"
           />
         )}
+
       </Stack>
     </Box>
   );

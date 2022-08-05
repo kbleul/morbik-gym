@@ -1,5 +1,5 @@
 
-import {useState , useEffect} from "react"
+import {useState } from "react"
 import {Box} from "@mui/material"
 import HeroBanner from "../components/HeroBanner"
 import Searchbox from "../components/Searchbox"
@@ -7,12 +7,8 @@ import Exercises from "../components/Exercises"
 
 
 const Home = () => {
-//Note : make use of useContext instead
     const [current_bodypart, set_current_bodypart] = useState("all")
     const [exercise, setexercise] = useState([])
-
-  
-
 
     return (<Box>
             <HeroBanner />

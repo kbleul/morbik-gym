@@ -32,7 +32,7 @@ const LeftArrow = () => {
   };
 
 
-const HorizontalScrollbar = ({ current_bodypart ,set_current_bodypart, bodyparts , isbodypart }) => {
+  const HorizontalScrollbar = ({ current_bodypart ,set_current_bodypart, bodyparts , isbodypart , set_targetmuscle_exe,  set_equipmentexe}) => {
 
 
     return (<article>
@@ -56,12 +56,12 @@ const HorizontalScrollbar = ({ current_bodypart ,set_current_bodypart, bodyparts
 
         : <section className="similar_container">
         {bodyparts.map(item => {
-          return <Box key={item.id || item}
+          return <Box className="similar_container-div" key={item.id || item}
               itemId={item.id || item}
               title={item.id || item}
-              m="0 40px"
+              sx={{ margin: {lg: "o 40px" , sx : "0 1px"} }} 
           >
-        <ExerciseCard exercise={item} /> 
+        <ExerciseCard exercise={item} set_targetmuscle_exe={set_targetmuscle_exe} set_equipmentexe={set_equipmentexe}/> 
         </Box>
 
          } )}

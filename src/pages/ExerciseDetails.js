@@ -34,38 +34,35 @@ const ExerciseDetails = () => {
 
                         
                         set_exercise_detail(exercise_detail_response)
-        window.scrollTo(0,0);
-
-
+                          window.scrollTo(0,0);
 
                 const youtube_response =  await fetchData(`${APIURLs.YOUTUBE_SEARCH}/search?query=${exercise_detail_response.name}`, youtube_options)
                 
                        setyoutube_videos(youtube_response.contents)
-        window.scrollTo(0,0);
+                          window.scrollTo(0,0);
 
 
-                const targetMusle_response = await fetchData(
+                let targetMuscle_response = await fetchData(
                     `${APIURLs.EXERCISE_DB}/exercises/target/${exercise_detail_response.target}`, exercise_options)
 
-                      set_targetmuscle_exe(targetMusle_response)
-        window.scrollTo(0,0);
+                    targetMuscle_response = targetMuscle_response.slice(0,15)
+                      set_targetmuscle_exe(targetMuscle_response)
 
-                  
 
-                const equipmentExercise_response = await fetchData(
+                let equipmentExercise_response = await fetchData(
                     `${APIURLs.EXERCISE_DB}/exercises/equipment/${exercise_detail_response.equipment}`, exercise_options)
 
+                    equipmentExercise_response = equipmentExercise_response.slice(0,15)
                      set_equipmentexe(equipmentExercise_response)
-        window.scrollTo(0,0);
 
 
         }
 
         fetch_exercise_details()
-
-
         
     },[id])
+
+
 
     return (<Box>
 
@@ -89,7 +86,7 @@ const ExerciseDetails = () => {
                 <div className="loading_container">
                   <img src={Loader} alt="loading"/>
                 </div>
-              : <SimilarExercises targetmuscle_exercises = {targetmuscle_exe} equipment_exercises={equipmentexe} /> 
+              : <SimilarExercises targetmuscle_exercises = {targetmuscle_exe} equipment_exercises={equipmentexe} set_targetmuscle_exe = {set_targetmuscle_exe} set_equipmentexe = {set_equipmentexe} /> 
            }
         </Box>)
 }

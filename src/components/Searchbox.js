@@ -18,20 +18,25 @@ const Searchbox = ({ setexercise, current_bodypart, set_current_bodypart }) => {
         "https://exercisedb.p.rapidapi.com/exercises/bodyPartList",
         exercise_options
       );
-      console.log(response);
 
-      set_bodypart_options(["all", ...response]);
+        set_bodypart_options(["all", ...response]);
     };
 
     fetchbody_catagories();
   }, []);
 
   const handleSearch = async () => {
+
+     setexercise([])
+     window.scrollTo(0,1630);
+
+
     if (search) {
       const exersise_data = await fetchData(
         "https://exercisedb.p.rapidapi.com/exercises",
         exercise_options
       );
+
 
       const searched_exercises = exersise_data.filter(
         (exersise) =>
@@ -41,15 +46,16 @@ const Searchbox = ({ setexercise, current_bodypart, set_current_bodypart }) => {
           exersise.bodyPart.toLowerCase().includes(search)
       );
 
+
       setsearch("");
-      setexercise(searched_exercises);
-      window.scrollTo(0,1630);
+      searched_exercises.length === 0 ? setexercise(["null"]) : setexercise(searched_exercises);
 
     }
   };
 
   return (
     <Stack alignItems="center" mt="37px" justifyContent="center" p="20px">
+
       <Typography
         fontWeight={700}
         sx={{
@@ -102,6 +108,7 @@ const Searchbox = ({ setexercise, current_bodypart, set_current_bodypart }) => {
       </Box>
 
       {bodypart_options.length > 0 ? <Box sx={{ position: "relative", width: "100%", p: "20px" }}>
+      
         <HorizontalScrollbar
           current_bodypart={current_bodypart}
           set_current_bodypart={set_current_bodypart}

@@ -20,14 +20,9 @@ function App() {
     const theme = useTheme(); 
     const themeUpdater = useUpdateTheme()
 
-    const [currentTheme, setTheme, removeTheme ] = useLocalStorage("myTheme", "light") 
+    const [currentTheme] = useLocalStorage("myTheme", "light") 
 
-    console.log(currentTheme)
-
-    useEffect(() => {
-      themeUpdater(currentTheme) 
-      console.log(theme)
-    }, [])
+    useEffect(() => { themeUpdater(currentTheme) }, [currentTheme , themeUpdater])
     
    
     
